@@ -1,10 +1,19 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
 
 public class PatronSystem {
     ArrayList<Patron> patrons = new ArrayList<>();
     BookInventory bookInventory = BookInventory.getInstance();
+    private static PatronSystem instance;
+    private PatronSystem() {
+    }
+
+    public static PatronSystem getInstance() {
+        if (instance == null) {
+            instance = new PatronSystem();
+        }
+        return instance;
+    }
     public void addPatron(Patron patron) {
         patrons.add(patron);
     }
@@ -34,13 +43,14 @@ public class PatronSystem {
     }
 
 
-    public void getPatronHistory(String memberId){
+    public List<BookItem> getPatronHistory(String memberId){
         Patron patron = findPatron(memberId);
         if (patron != null) {
             List<BookItem> books = bookInventory.getBooksForUser(memberId);
-            for (BookItem book : books) {
-                System.out.println(book.getTitle() + " " + book.getISBN());
-            }
+            return books ;
+        }
+        else  {
+            return List.of();
         }
     }
 

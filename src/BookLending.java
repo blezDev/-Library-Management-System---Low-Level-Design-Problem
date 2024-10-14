@@ -11,7 +11,7 @@ public interface BookLending {
 
     public List<BookItem> availableBooks();
 
-    public List<BookItem> borrowedBooks(String title);
+    public List<BookItem> borrowedBooks();
 
     public void reserveBook(String ISBN, String memberId);
 

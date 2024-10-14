@@ -129,14 +129,15 @@ public class BookInventory implements Search, BookLending {
     }
 
     @Override
-    public List<BookItem> borrowedBooks(String title) {
+    public List<BookItem> borrowedBooks() {
         List<BookItem> bookItems = new ArrayList<>();
         for (BookItem bookItem : booksDB.values()) {
-            if (bookItem.getTitle().equals(title) && bookItem.getBookStatus() == BookStatus.LOANED) {
+            if (bookItem.getBookStatus() == BookStatus.LOANED) {
                 bookItems.add(bookItem);
             }
         }
         return bookItems;
+
     }
 
     @Override

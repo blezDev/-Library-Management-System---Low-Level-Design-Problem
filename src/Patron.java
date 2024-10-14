@@ -4,6 +4,12 @@ public class Patron extends Account{
     private String memberId;
     private Date dateOfMembership;
 
+    public Patron(String memberId, String name, Date dateOfMembership) {
+        super.setName(name);
+        this.memberId = memberId;
+        this.dateOfMembership = dateOfMembership;
+    }
+
     public String getMemberId() {
         return memberId;
     }

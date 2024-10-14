@@ -5,6 +5,25 @@ public class BookItem extends Book {
     private Date BorrowedDate;
 
 
+    public BookItem( Date borrowedDate, String ISBN, String title, String author, String publisherYear) {
+
+        BorrowedDate = borrowedDate;
+        super.setISBN(ISBN);
+        super.setTitle(title);
+        super.setAuthor(author);
+        super.setPublisherYear(publisherYear);
+    }
+    public BookItem( BookStatus bookStatus, String ISBN, String title, String author, String publisherYear) {
+        this.bookStatus = bookStatus;
+        super.setISBN(ISBN);
+        super.setTitle(title);
+        super.setAuthor(author);
+        super.setPublisherYear(publisherYear);
+    }
+
+    public BookItem() {
+    }
+
     public boolean checkout() {
         if (bookStatus == BookStatus.AVAILABLE) {
             bookStatus = BookStatus.LOANED;
